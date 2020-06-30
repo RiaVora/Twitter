@@ -8,8 +8,15 @@
 
 #import "TimelineViewController.h"
 #import "APIManager.h"
+#import "TweetCell.h"
+#import "Tweet.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface TimelineViewController ()
+
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *allTweets;
 
 @end
 
@@ -18,14 +25,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
-                NSLog(@"%@", text);
-            }
+            self.allTweets = [NSMutableArray arrayWithArray:tweets];
+            
+            [self.tableView reloadData];
+
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -46,6 +56,28 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    
+    Tweet *tweet = self.allTweets[indexPath.row];
+    User *user = tweet.user;
+    cell.userLabel.text = user.name;
+    cell.handleLabel.text = [NSString stringWithFormat:@"@%@", user.screenName];
+    cell.tweetLabel.text = tweet.text;
+    cell.dateLabel.text = tweet.createdAt;
+
+    cell.profileView.image = nil;
+    
+    [cell.profileView setImageWithURL:user.profileImageURL];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.allTweets.count;
+}
 
 
 @end
