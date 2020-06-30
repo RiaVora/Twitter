@@ -67,10 +67,15 @@
     cell.handleLabel.text = [NSString stringWithFormat:@"@%@", user.screenName];
     cell.tweetLabel.text = tweet.text;
     cell.dateLabel.text = tweet.createdAt;
+//    NSLog([NSString stringWithFormat:@"%d", tweet.favoriteCount]);
+    cell.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
 
     cell.profileView.image = nil;
     
     [cell.profileView setImageWithURL:user.profileImageURL];
+    cell.profileView.layer.cornerRadius = 10;
+
     
     return cell;
 }
