@@ -7,6 +7,7 @@
 //
 
 #import "Tweet.h"
+#import "DateTools.h"
 
 @implementation Tweet
 
@@ -31,20 +32,21 @@
         
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
-        self.createdAt = [self getFormattedString:dictionary];
+        self.createdAt = [self getFormattedDate:dictionary];
 
     }
     return self;
 }
 
-- (NSString *)getFormattedString:(NSDictionary *)dictionary {
+- (NSString *)getFormattedDate:(NSDictionary *)dictionary {
     NSString *createdAtOriginalString = dictionary[@"created_at"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
     NSDate *date = [formatter dateFromString:createdAtOriginalString];
     formatter.dateStyle = NSDateFormatterShortStyle;
     formatter.timeStyle = NSDateFormatterNoStyle;
-    return [formatter stringFromDate:date];
+    return [date.shortTimeAgoSinceNow stringByAppendingString:@" ago"];
+//    return [formatter stringFromDate:date];
 }
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries {
