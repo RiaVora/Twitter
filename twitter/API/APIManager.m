@@ -74,4 +74,16 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
     }];
 }
 
+- (void)takeAction:(Tweet *)tweet :(NSString *)action completion:(void (^)(Tweet *, NSError *))completion{
+
+    NSString *urlString = [NSString stringWithFormat:@"1.1/%@.json", action];
+    NSDictionary *parameters = @{@"id": tweet.idStr};
+    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
+        Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
+        completion(tweet, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
 @end

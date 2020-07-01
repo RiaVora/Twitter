@@ -79,13 +79,13 @@
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     
     Tweet *tweet = self.allTweets[indexPath.row];
+    cell.tweet = tweet;
     User *user = tweet.user;
     cell.userLabel.text = user.name;
     cell.handleLabel.text = [NSString stringWithFormat:@"@%@", user.screenName];
     cell.tweetLabel.text = tweet.text;
     cell.dateLabel.text = tweet.createdAt;
-    cell.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
-    cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    [cell refreshData];
 
     cell.profileView.image = nil;
     
