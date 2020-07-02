@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKJ-HH-8tn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="14" y="-140"/>
+            <point key="canvasLocation" x="-878" y="-141"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="1Tv-nE-1AW">
@@ -217,6 +217,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ugE-Ul-H9I"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Timeline" image="home-icon" id="7TG-3u-I9J"/>
                     <navigationItem key="navigationItem" title="Timeline" id="MOc-fV-EZE">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="uq5-Ey-SGK">
                             <connections>
@@ -235,21 +236,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13" y="1289"/>
+            <point key="canvasLocation" x="-1706" y="1333"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="FWL-B0-6jf">
+            <objects>
+                <viewController id="RDD-ud-Gk6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hu2-B9-0nm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Wja-3o-5hg"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-Icon" id="46O-SC-3ti"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Luc-A0-Ue4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="910" y="1361"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UOu-Gz-LUV">
             <objects>
                 <tabBarController id="A24-XB-3NJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5rJ-34-Xg9"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3UX-7w-VoW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="Lbl-k5-U4i" kind="relationship" relationship="viewControllers" id="bjT-8w-qq2"/>
+                        <segue destination="RDD-ud-Gk6" kind="relationship" relationship="viewControllers" id="ozA-Eq-4DB"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjJ-t8-0qK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-972" y="788"/>
+            <point key="canvasLocation" x="12" y="644"/>
         </scene>
         <!--ComposeViewController-->
         <scene sceneID="LjW-yI-0cH">
@@ -297,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nAF-1v-ndv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="2021"/>
+            <point key="canvasLocation" x="12" y="2065"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WUT-Ke-VeR">
@@ -310,12 +332,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Lbl-k5-U4i" kind="relationship" relationship="rootViewController" id="1DH-bv-mXM"/>
+                        <segue destination="A24-XB-3NJ" kind="relationship" relationship="rootViewController" id="NKY-Nu-gRa"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHS-35-jFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="-141"/>
+            <point key="canvasLocation" x="12" y="-142"/>
         </scene>
         <!--DetailsViewController-->
         <scene sceneID="Acj-S8-8Kr">
@@ -410,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UxN-XO-HDL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-449.27536231884062" y="2020.9821428571427"/>
+            <point key="canvasLocation" x="-2167" y="2065"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZHY-Vt-yIK">
@@ -428,13 +450,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zgh-Sw-q0q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="2021"/>
+            <point key="canvasLocation" x="-764" y="2065"/>
         </scene>
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="favor-icon-red" width="30" height="30"/>
+        <image name="home-icon" width="30" height="30"/>
+        <image name="profile-Icon" width="26" height="26"/>
         <image name="retweet-icon" width="30" height="30"/>
         <image name="retweet-icon-green" width="30" height="30"/>
     </resources>
