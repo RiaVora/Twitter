@@ -51,14 +51,14 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
     
     // Create a GET Request
     [self GET:@"1.1/statuses/home_timeline.json"
-        parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
-            // Success
-            NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
-            completion(tweets, nil);
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            // There was a problem
-            completion(nil, error);
-        }];
+   parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+        // Success
+        NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+        completion(tweets, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // There was a problem
+        completion(nil, error);
+    }];
 }
 
 
@@ -75,7 +75,7 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
 }
 
 - (void)takeAction:(Tweet *)tweet :(NSString *)action completion:(void (^)(Tweet *, NSError *))completion{
-
+    
     NSString *urlString = [NSString stringWithFormat:@"1.1/%@.json", action];
     NSDictionary *parameters = @{@"id": tweet.idStr};
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {

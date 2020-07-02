@@ -49,7 +49,7 @@
             self.allTweets = [NSMutableArray arrayWithArray:tweets];
             
             [self.tableView reloadData];
-
+            
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -58,17 +58,16 @@
 }
 
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
-
+    
     [self fetchTweets];
     
     [self.refreshControl endRefreshing];
-
+    
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -79,7 +78,7 @@
     } else if ([segue.identifier isEqualToString: @"DetailsSegue"]) {
         [self detailsTweetSegue:segue sender:sender];
     }
-
+    
 }
 
 - (void)composeTweetSegue:(UIStoryboardSegue *)segue {
@@ -109,12 +108,11 @@
     cell.tweetLabel.text = tweet.text;
     cell.dateLabel.text = tweet.createdAt;
     [cell refreshData];
-
+    
     cell.profileView.image = nil;
     
     [cell.profileView setImageWithURL:user.profileImageURL];
     cell.profileView.layer.cornerRadius = 10;
-
     
     return cell;
 }

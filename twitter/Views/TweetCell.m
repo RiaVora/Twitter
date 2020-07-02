@@ -12,14 +12,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
+
 - (IBAction)pressedLike:(id)sender {
     
     NSString *action = @"favorites/create";
@@ -28,12 +26,12 @@
         action = @"favorites/destroy";
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
-
+        
     } else {
         self.tweet.favorited = YES;
         self.tweet.favoriteCount += 1;
     }
-
+    
     [self refreshFavorited];
     
     [[APIManager shared]takeAction:self.tweet:action completion:^(Tweet *tweet, NSError *error) {
@@ -44,9 +42,10 @@
         }
     }];
 }
+
 - (IBAction)pressedRetweet:(id)sender {
     NSString *action = @"statuses/retweet";
-
+    
     if (self.tweet.retweeted) {
         action = @"statuses/unretweet";
         self.tweet.retweeted = NO;
@@ -81,7 +80,5 @@
     self.retweetButton.selected = self.tweet.retweeted;
     self.retweetLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
 }
-
-
 
 @end

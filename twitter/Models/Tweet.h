@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "User.h";
+#import "User.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,12 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSString *createdAt;
 
-
 @property (nonatomic, strong) User *retweetedByUser;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries;
-
 
 @end
 
