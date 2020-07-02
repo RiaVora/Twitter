@@ -34,7 +34,7 @@
     
     [self refreshFavorited];
     
-    [[APIManager shared]takeAction:self.tweet:action completion:^(Tweet *tweet, NSError *error) {
+    [[APIManager shared]interactWithTweet:self.tweet:action completion:^(Tweet *tweet, NSError *error) {
         if(error) {
             NSLog(@"Error %@ Tweet: %@", action, error.localizedDescription);
         } else {
@@ -57,7 +57,7 @@
     
     [self refreshRetweeted];
     
-    [[APIManager shared]takeAction:self.tweet:action completion:^(Tweet *tweet, NSError *error) {
+    [[APIManager shared]interactWithTweet:self.tweet:action completion:^(Tweet *tweet, NSError *error) {
         if(error) {
             NSLog(@"Error %@ Tweet: %@", action, error.localizedDescription);
         } else {

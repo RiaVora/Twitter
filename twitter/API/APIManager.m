@@ -74,7 +74,7 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
     }];
 }
 
-- (void)takeAction:(Tweet *)tweet :(NSString *)action completion:(void (^)(Tweet *, NSError *))completion{
+- (void)interactWithTweet:(Tweet *)tweet :(NSString *)action completion:(void (^)(Tweet *, NSError *))completion{
     
     NSString *urlString = [NSString stringWithFormat:@"1.1/%@.json", action];
     NSDictionary *parameters = @{@"id": tweet.idStr};
@@ -85,5 +85,7 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
         completion(nil, error);
     }];
 }
+
+//- (void)getProfileData:(void(^)(Tweet *tweets, NSError *error))completion
 
 @end
