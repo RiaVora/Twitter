@@ -86,6 +86,29 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
     }];
 }
 
-//- (void)getProfileData:(void(^)(Tweet *tweets, NSError *error))completion
+- (void)getUserData:(void (^)(NSDictionary *, NSError *))completion {
+    
+    NSString *urlString = @"1.1/account/verify_credentials.json";
+    [self GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable credentials) {
+        NSLog(@"We are getting here");
+        completion(credentials, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+- (void)lookupUserID:(NSString *)idStr completion:(void (^)(User *, NSError *))completion {
+    
+    NSString *urlString = @"1.1/users/show.json";
+    NSDictionary *parameters = @{@"user_id": idStr};
+    [self GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable dictionary) {
+        User *user = [[User alloc]initWithDictionary:dictionary];
+        completion(user, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+
 
 @end

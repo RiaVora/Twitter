@@ -18,6 +18,14 @@
         NSString *profileImageString = [dictionary[@"profile_image_url_https"]
                                         stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
         self.profileImageURL = [NSURL URLWithString:profileImageString];
+        NSString *profileBannerString = [dictionary[@"profile_banner_url"]
+                                        stringByAppendingString:@"mobile"];
+        self.profileBannerURL = [NSURL URLWithString:profileBannerString];
+        
+        self.verified = [dictionary[@"verified"] boolValue];
+        self.followingCount = [dictionary[@"friends_count"] intValue];
+        self.followersCount = [dictionary[@"followers_count"] intValue];
+        self.tweetCount = [dictionary[@"statuses_count"] intValue];
         
     }
     return self;
