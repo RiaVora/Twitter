@@ -18,7 +18,7 @@
     [super setSelected:selected animated:animated];
 }
 
-- (IBAction)pressedLike:(id)sender {
+- (IBAction)pressedFavorite:(id)sender {
     
     NSString *action = @"favorites/create";
     
@@ -32,13 +32,14 @@
         self.tweet.favoriteCount += 1;
     }
     
-    [self refreshFavorited];
+    [self refreshFavorites];
     
     [[APIManager shared]interactWithTweet:self.tweet:action completion:^(Tweet *tweet, NSError *error) {
         if(error) {
-            NSLog(@"Error %@ Tweet: %@", action, error.localizedDescription);
+            NSLog(@"Error %@ Tweet: %@", error.localizedDescription, tweet.text);
         } else {
             NSLog(@"Successfully %@d the following Tweet: %@", action, tweet.text);
+            self.tweet = tweet;
         }
     }];
 }
@@ -55,28 +56,29 @@
         self.tweet.retweetCount += 1;
     }
     
-    [self refreshRetweeted];
+    [self refreshRetweets];
     
     [[APIManager shared]interactWithTweet:self.tweet:action completion:^(Tweet *tweet, NSError *error) {
         if(error) {
-            NSLog(@"Error %@ Tweet: %@", action, error.localizedDescription);
+            NSLog(@"Error %@ Tweet: %@", error.localizedDescription, tweet.text);
         } else {
             NSLog(@"Successfully %@d the following Tweet: %@", action, tweet.text);
+            self.tweet = tweet;
         }
     }];
 }
 
 - (void)refreshData {
-    [self refreshFavorited];
-    [self refreshRetweeted];
+    [self refreshFavorites];
+    [self refreshRetweets];
 }
 
-- (void)refreshFavorited {
+- (void)refreshFavorites {
     self.favoriteButton.selected = self.tweet.favorited;
     self.favoriteLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
 }
 
-- (void)refreshRetweeted {
+- (void)refreshRetweets {
     self.retweetButton.selected = self.tweet.retweeted;
     self.retweetLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
 }

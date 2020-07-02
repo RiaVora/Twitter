@@ -22,15 +22,15 @@
 }
 
 - (void)fetchUser {
-    NSString __block *idStr = @"";
+    NSString __block *screenName = @"";
     [[APIManager shared]getUserData:^(NSDictionary *dictionary, NSError *error) {
         if(error){
             NSLog(@"Error returning user: %@", error.localizedDescription);
         }
         else{
-            idStr = dictionary[@"id_str"];
-            NSLog(@"Successfully found User's ID String! %@", idStr);
-            [[APIManager shared]lookupUserID:idStr completion:^(User *foundUser, NSError *error) {
+            screenName = dictionary[@"screen_name"];
+            NSLog(@"Successfully found User's ID String! %@", screenName);
+            [[APIManager shared]lookupUserID:screenName completion:^(User *foundUser, NSError *error) {
                 if (error) {
                     NSLog(@"Error finding user: %@", error.localizedDescription);
                 } else {
@@ -47,6 +47,9 @@
 - (void)refreshData {
     self.profileView.image = nil;
     [self.profileView setImageWithURL: self.user.profileImageURL];
+    
+    self.bannerView.image = nil;
+       [self.bannerView setImageWithURL: self.user.profileBannerURL];
     
     self.nameLabel.text = self.user.name;
     self.handleLabel.text = self.user.screenName;

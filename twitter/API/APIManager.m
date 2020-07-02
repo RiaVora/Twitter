@@ -49,21 +49,18 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
     
-    // Create a GET Request
     [self GET:@"1.1/statuses/home_timeline.json?tweet_mode=extended"
    parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
-        // Success
         NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
         completion(tweets, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        // There was a problem
         completion(nil, error);
     }];
 }
 
 
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion{
-    NSString *urlString = @"1.1/statuses/update.json";
+    NSString *urlString = @"1.1/statuses/update.json?tweet_mode=extended";
     NSDictionary *parameters = @{@"status": text};
     
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
@@ -78,6 +75,7 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
     
     NSString *urlString = [NSString stringWithFormat:@"1.1/%@.json", action];
     NSDictionary *parameters = @{@"id": tweet.idStr};
+    NSLog(@"%@", tweet.idStr);
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
         completion(tweet, nil);
@@ -97,10 +95,10 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
     }];
 }
 
-- (void)lookupUserID:(NSString *)idStr completion:(void (^)(User *, NSError *))completion {
+- (void)lookupUserID:(NSString *)screenName completion:(void (^)(User *, NSError *))completion {
     
     NSString *urlString = @"1.1/users/show.json";
-    NSDictionary *parameters = @{@"user_id": idStr};
+    NSDictionary *parameters = @{@"screen_name": screenName};
     [self GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable dictionary) {
         User *user = [[User alloc]initWithDictionary:dictionary];
         completion(user, nil);

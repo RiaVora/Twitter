@@ -18,6 +18,6 @@
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *)) completion;
 - (void)interactWithTweet:(Tweet *)tweet :(NSString *)action completion:(void (^)(Tweet *, NSError *))completion;
 - (void)getUserData:(void (^)(NSDictionary *, NSError *))completion;
-- (void)lookupUserID:(NSString *)idStr completion:(void (^)(User *, NSError *))completion;
+- (void)lookupUserID:(NSString *)screenName completion:(void (^)(User *, NSError *))completion;
 
 @end
