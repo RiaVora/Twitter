@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TweetCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *userLabel;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tweetLabel;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *handleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (weak, nonatomic) IBOutlet UILabel *replyLabel;
 
 - (void)refreshData;
 

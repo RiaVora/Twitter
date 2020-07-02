@@ -29,7 +29,6 @@
         self.favorited = [dictionary[@"favorited"] boolValue];
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
         self.retweeted = [dictionary[@"retweeted"] boolValue];
-        
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
         self.createdAt = [self getFormattedDate:dictionary];
@@ -46,7 +45,6 @@
     formatter.dateStyle = NSDateFormatterShortStyle;
     formatter.timeStyle = NSDateFormatterNoStyle;
     return [date.shortTimeAgoSinceNow stringByAppendingString:@" ago"];
-//    return [formatter stringFromDate:date];
 }
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries {
