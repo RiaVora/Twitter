@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+#import "UIImageView+AFNetworking.h"
+#import "APIManager.h"
+#import "TweetCell.h"
+#import "ComposeViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

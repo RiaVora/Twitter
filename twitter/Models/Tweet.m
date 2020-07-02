@@ -32,6 +32,7 @@
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
         self.createdAt = [self getFormattedDate:dictionary];
+        self.inReplyToID = dictionary[@"in_reply_to_status_id_str"];
         
     }
     return self;

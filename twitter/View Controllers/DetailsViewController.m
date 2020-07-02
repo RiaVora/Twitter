@@ -7,9 +7,7 @@
 //
 
 #import "DetailsViewController.h"
-#import "UIImageView+AFNetworking.h"
-#import "APIManager.h"
-#import "TweetCell.h"
+
 
 @interface DetailsViewController ()
 
@@ -81,8 +79,7 @@
         }
     }];
 }
-- (IBAction)pressedReply:(id)sender {
-}
+
 
 - (void)refreshData {
     [self refreshFavorites];
@@ -97,6 +94,14 @@
 - (void)refreshRetweets {
     self.retweetButton.selected = self.tweet.retweeted;
     self.retweetLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+//    composeController.delegate = self;
+    composeController.inReplyToID = self.tweet.idStr;
+    composeController.author = [@"@" stringByAppendingString:self.tweet.user.screenName];
 }
 
 @end

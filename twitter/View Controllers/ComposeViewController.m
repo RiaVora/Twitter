@@ -26,7 +26,17 @@
 }
 
 - (IBAction)tweetPressed:(id)sender {
-    [[APIManager shared]postStatusWithText:self.composeTextView.text completion:^(Tweet *tweet, NSError *error) {
+    NSString *allText = [@" " stringByAppendingString:self.composeTextView.text];
+    if (self.author) {
+        allText = [self.author stringByAppendingString:allText];
+    }
+    
+    NSString *idStr = @"";
+    if (self.inReplyToID) {
+        idStr = self.inReplyToID;
+    }
+    
+    [[APIManager shared]postStatusWithText:allText:idStr completion:^(Tweet *tweet, NSError *error) {
         if(error){
             NSLog(@"Error composing Tweet: %@", error.localizedDescription);
         }
