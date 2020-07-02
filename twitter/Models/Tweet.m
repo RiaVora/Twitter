@@ -32,7 +32,7 @@
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
         self.createdAt = [self getFormattedDate:dictionary];
-
+        
     }
     return self;
 }
