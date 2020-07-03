@@ -74,6 +74,14 @@ Here's a walkthrough of:
 
 <img src='http://g.recordit.co/fM6G0JRgoc.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+- Seeing a detailed version of the tweet with retweet and like buttons, as well as replying to a tweet
+
+<img src='http://g.recordit.co/I9tRpREV9u.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+- Using a tab view controller to see one's profile
+
+<img src='http://g.recordit.co/uTSKz0Qd5n.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 GIF created with [Recordit](https://recordit.co/).
 
 ## Notes
