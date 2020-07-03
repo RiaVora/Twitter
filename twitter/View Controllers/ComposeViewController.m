@@ -26,9 +26,9 @@
 }
 
 - (IBAction)tweetPressed:(id)sender {
-    NSString *allText = [@" " stringByAppendingString:self.composeTextView.text];
+    NSString *allText = self.composeTextView.text;
     if (self.author) {
-        allText = [self.author stringByAppendingString:allText];
+        allText = [NSString stringWithFormat:@"Replying to %@\r%@", self.author, allText];
     }
     
     NSString *idStr = @"";
