@@ -37,6 +37,7 @@
     [[APIManager shared]interactWithTweet:self.tweet:action completion:^(Tweet *tweet, NSError *error) {
         if(error) {
             NSLog(@"Error %@ Tweet: %@", error.localizedDescription, tweet.text);
+            //revert back tweet.favorited and tweet.favoriteCount
         } else {
             NSLog(@"Successfully %@d the following Tweet: %@", action, tweet.text);
             self.tweet = tweet;
