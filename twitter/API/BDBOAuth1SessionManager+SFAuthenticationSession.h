@@ -21,14 +21,14 @@
  accessTokenPath: 'oauth/access_token'
  
  http methods: 'POST'
-
+ 
  @param completion Completion block performed once authentication is finalized. It indicates if was successful and includes an error if it wasn't
  */
 - (void)loginWithCompletion:(void(^)(BOOL success, NSError * error))completion;
 
 /**
  OAuth authentication method using SFAuthenticationSession (iOS 11+)
-
+ 
  @param authenticationPath Path for authenticating with a request token. The request token will be appended to this path (ie: 'oauth/authenticate?oauth_token=')
  @param requestTokenPath Path to get a request token (ie: 'oauth/request_token')
  @param requestTokenMethod HTTP method for getting request token
@@ -45,7 +45,7 @@
 
 /**
  Logs out this manager and removes any stored access token
-
+ 
  @return YES if an access token was found and removed from the keychain, NO otherwise.
  */
 - (BOOL)logout;

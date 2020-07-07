@@ -6,6 +6,8 @@
 //  Copyright © 2018 Emerson Malca. All rights reserved.
 //
 
+/*The APIManager is used to facilitate calls between Twitter's API and my Twitter app. The API Manager is used to send information back to Twitter to be updated and pull information to be displayed.*/
+
 #import "APIManager.h"
 
 static NSString * const baseURLString = @"https://api.twitter.com";
@@ -105,7 +107,5 @@ static NSString * const consumerSecret = @"j2ipXkmVYNmvwHsMP9vJTlZMFOVz4CdKYHZk7
         completion(nil, error);
     }];
 }
-
-
 
 @end

@@ -6,6 +6,8 @@
 //  Copyright © 2020 Emerson Malca. All rights reserved.
 //
 
+/*The UserProfileViewController is used to display the profile of the user currently logged in. It takes the data from the current user log-in information to show followers, following, profile photo, and number of tweets.*/
+
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "APIManager.h"

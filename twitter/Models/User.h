@@ -6,6 +6,9 @@
 //  Copyright © 2020 Emerson Malca. All rights reserved.
 //
 
+/*The User model is used to represent a User object from Twitter's API, and stores the attributes of the User object as attributes of the class. The User object is initialized from the dictionary sent by Twitter's API that represents a User object.*/
+
+
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -20,10 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int followingCount;
 @property (nonatomic) int followersCount;
 @property (nonatomic) int tweetCount;
-
-
-
-
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

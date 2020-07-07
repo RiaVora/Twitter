@@ -6,6 +6,9 @@
 //  Copyright © 2020 Emerson Malca. All rights reserved.
 //
 
+/*The purpose of the DetailsViewController is to show a detailed view of a tweet from the TimelineViewController. The DetailsViewController is shown when a tweet is clicked on the TimelineViewController, and displays a larger version of the tweet with a more detailed "created_at" attribute and a reply feature.*/
+
+
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 #import "UIImageView+AFNetworking.h"

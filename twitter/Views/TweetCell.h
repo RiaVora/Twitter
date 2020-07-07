@@ -6,6 +6,9 @@
 //  Copyright © 2020 Emerson Malca. All rights reserved.
 //
 
+/*The TweetCell is used to represent a TableViewCell that displays a tweet in the TimelineViewController, and handles the favoriting, unfavoriting, retweeting, and unretweeting a tweet (with the animation and the call back to the API Manager to update the tweet).*/
+
+
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
 #import "Tweet.h"

@@ -14,12 +14,11 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
-        
         NSDictionary *originalTweet = dictionary[@"retweeted_status"];
+        
         if (originalTweet != nil) {
             NSDictionary *userDictionary = dictionary[@"user"];
             self.retweetedByUser = [[User alloc] initWithDictionary:userDictionary];
-            
             dictionary = originalTweet;
         }
         

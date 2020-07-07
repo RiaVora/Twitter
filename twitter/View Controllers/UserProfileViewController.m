@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self fetchUser];
 }
 
@@ -49,22 +48,13 @@
     [self.profileView setImageWithURL: self.user.profileImageURL];
     
     self.bannerView.image = nil;
-       [self.bannerView setImageWithURL: self.user.profileBannerURL];
+    [self.bannerView setImageWithURL: self.user.profileBannerURL];
     
     self.nameLabel.text = self.user.name;
     self.handleLabel.text = self.user.screenName;
     self.followerLabel.text = [NSString stringWithFormat:@"%d", self.user.followersCount];
     self.followingLabel.text = [NSString stringWithFormat:@"%d", self.user.followingCount];
-
+    
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
